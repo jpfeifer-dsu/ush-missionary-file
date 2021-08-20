@@ -10,7 +10,7 @@ WITH cohorts AS (SELECT a.sgrchrt_pidm AS pidm,
                    FROM sgrchrt a
                         LEFT JOIN stvterm b
                         ON b.stvterm_code = a.sgrchrt_term_code_eff
-                  WHERE b.stvterm_desc IN ('Fall 2013', 'Spring 2014', 'Fall 2014', 'Spring 2015')
+                  WHERE b.stvterm_desc IN ('Fall 2013', 'Spring 2014', 'Fall 2015', 'Spring 2016', 'Fall 2020', 'Spring 2021')
                     AND (sgrchrt_chrt_code LIKE 'FT%' OR sgrchrt_chrt_code LIKE 'TU%'))
 
 /* USHE Submission Query */
@@ -22,7 +22,7 @@ WITH cohorts AS (SELECT a.sgrchrt_pidm AS pidm,
              TO_CHAR(c.spbpers_birth_date, 'YYYYMMDD') AS m_birth_dt,
              /* oldest term end date */
              TO_CHAR(MIN(d.stvterm_end_date), 'YYYYMMDD') AS m_start_dt,
-             TO_CHAR(TO_DATE('01-31-2021', 'MM-DD-YYYY'), 'YYYYMMDD') AS m_end_dt,
+             TO_CHAR(TO_DATE('08-31-2021', 'MM-DD-YYYY'), 'YYYYMMDD') AS m_end_dt,
              'D' || b.spriden_id AS m_banner_id
         FROM cohorts a
   INNER JOIN spriden b
@@ -36,6 +36,6 @@ WITH cohorts AS (SELECT a.sgrchrt_pidm AS pidm,
              b.spriden_first_name,
              b.spriden_mi,
              TO_CHAR(c.spbpers_birth_date, 'YYYYMMDD'),
-             TO_CHAR(TO_DATE('08-31-2020', 'MM-DD-YYYY'), 'YYYYMMDD'),
+             TO_CHAR(TO_DATE('08-31-2021', 'MM-DD-YYYY'), 'YYYYMMDD'),
              b.spriden_id;
 
